@@ -1,14 +1,14 @@
 from django.contrib import admin
 from django.urls import path,include
 from rest_framework import routers
-from djangoapp.views import CompanyViewSet,EmployeeViewSet
+from djangoapp.views import *
 
 router = routers.DefaultRouter()
-router.register(r"Company",CompanyViewSet)
-router.register(r"employee",EmployeeViewSet)
+router.register("company",CompanyViewSet)
+router.register("employee",EmployeeViewSet)
 
 urlpatterns = [
-    path('',include(router.urls)),
-    path('company',CompanyViewSet.as_view({'get': 'list'})),
+    path('app/',include(router.urls)),
+    path('company/',CompanyView.as_view()),
+    path('employee/',EmployeeView.as_view()),
 ]
- 
